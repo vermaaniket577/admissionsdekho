@@ -99,7 +99,22 @@ class PageController extends Controller
 
         $template = !$cleanSlug ? 'home' : ($page->template_name ?: 'default');
 
-        if ($cleanSlug && (str_contains($cleanSlug, 'law') || str_contains($cleanSlug, 'education-consultants'))) {
+        if ($cleanSlug === 'privacy-policy') {
+            $template = 'privacy-policy';
+        } elseif ($cleanSlug === 'legal-support') {
+            $template = 'legal-support';
+        } elseif ($cleanSlug === 'terms-conditions') {
+            $template = 'terms-conditions';
+        } elseif ($cleanSlug === 'free-counseling') {
+            $template = 'free-counseling';
+        } elseif ($cleanSlug === 'evaluate-my-profile') {
+            $template = 'evaluate-my-profile';
+        } elseif ($cleanSlug === 'universities') {
+            return (new UniversityController())->index($request);
+        } elseif ($cleanSlug && str_starts_with($cleanSlug, 'universities/')) {
+            $univSlug = str_replace('universities/', '', $cleanSlug);
+            return (new UniversityController())->show($univSlug);
+        } elseif ($cleanSlug && (str_contains($cleanSlug, 'law') || str_contains($cleanSlug, 'education-consultants'))) {
             $template = 'law';
         }
 

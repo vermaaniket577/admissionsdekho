@@ -19,15 +19,21 @@
                         <img src="{{ asset('/images/page-assets/campus-hero.png') }}" alt="{{ $page->title }}" class="w-full h-full object-cover">
                     </div>
 
-                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-                        <h2 class="text-2xl font-bold text-slate-900">India's Leading Admission Advisory Team</h2>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            AdmissionsDekho operates as an independent educational consultancy helping thousands of students secure seats in top-ranked engineering, science, management, medical, nursing, and teacher training institutes.
-                        </p>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Our panel of senior academic counselors provides 100% objective, transparent guidance on eligibility criteria, cutoff trends, fee waivers, and official university accreditations.
-                        </p>
-                    </div>
+                    @if(!empty($page->content))
+                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                            {!! $page->content !!}
+                        </div>
+                    @else
+                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                            <h2 class="text-2xl font-bold text-slate-900">India's Leading Admission Advisory Team</h2>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                AdmissionsDekho operates as an independent educational consultancy helping thousands of students secure seats in top-ranked engineering, science, management, medical, nursing, and teacher training institutes.
+                            </p>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Our panel of senior academic counselors provides 100% objective, transparent guidance on eligibility criteria, cutoff trends, fee waivers, and official university accreditations.
+                            </p>
+                        </div>
+                    @endif
 
                     <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
                         <h3 class="text-xl font-bold text-slate-900">Services Offered by AdmissionsDekho</h3>

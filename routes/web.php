@@ -62,6 +62,11 @@ Route::post('/lead/submit', [LeadController::class, 'submit'])->name('lead.submi
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
+// University Routes
+Route::get('/universities', [\App\Http\Controllers\UniversityController::class, 'index'])->name('universities.index');
+Route::get('/universities/{slug}', [\App\Http\Controllers\UniversityController::class, 'show'])->name('universities.show');
+Route::get('/university/{slug}', [\App\Http\Controllers\UniversityController::class, 'show']);
+
 // Home Route
 Route::get('/', [PageController::class, 'show'])->name('home');
 

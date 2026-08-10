@@ -80,15 +80,80 @@
         <!-- Office Address -->
         <div>
             <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Head Office Address *</label>
-            <textarea name="contact_address" rows="3" required
+            <textarea name="contact_address" rows="2" required
                       class="w-full bg-slate-50 border border-slate-300 focus:border-blue-500 focus:bg-white text-slate-900 text-sm font-medium rounded-xl p-4 outline-none transition leading-relaxed">{{ old('contact_address', $settings['contact_address']) }}</textarea>
             <p class="text-[11px] text-slate-500 mt-1">Official postal address shown on Contact Us page and footer widgets.</p>
+        </div>
+
+        <!-- Social Media Links Section -->
+        <div class="pt-6 border-t border-slate-200/80 space-y-4">
+            <div>
+                <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
+                    <span>🌐 Social Media Profile & Channel Links</span>
+                </h3>
+                <p class="text-xs text-slate-500 mt-0.5">Control official social media page links displayed in website footers and floating contact channels.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- LinkedIn URL -->
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">LinkedIn Page URL</label>
+                    <div class="relative">
+                        <input type="url" name="social_linkedin" value="{{ old('social_linkedin', $settings['social_linkedin']) }}" placeholder="https://linkedin.com/company/yourbrand"
+                               class="w-full bg-slate-50 border border-slate-300 focus:border-blue-500 focus:bg-white text-slate-900 rounded-xl pl-10 pr-4 py-3 text-sm font-semibold outline-none transition">
+                        <span class="absolute left-3.5 top-3 text-base">💼</span>
+                    </div>
+                </div>
+
+                <!-- Facebook URL -->
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Facebook Page URL</label>
+                    <div class="relative">
+                        <input type="url" name="social_facebook" value="{{ old('social_facebook', $settings['social_facebook']) }}" placeholder="https://facebook.com/yourbrand"
+                               class="w-full bg-slate-50 border border-slate-300 focus:border-blue-500 focus:bg-white text-slate-900 rounded-xl pl-10 pr-4 py-3 text-sm font-semibold outline-none transition">
+                        <span class="absolute left-3.5 top-3 text-base">📘</span>
+                    </div>
+                </div>
+
+                <!-- Instagram URL -->
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Instagram Profile URL</label>
+                    <div class="relative">
+                        <input type="url" name="social_instagram" value="{{ old('social_instagram', $settings['social_instagram']) }}" placeholder="https://instagram.com/yourbrand"
+                               class="w-full bg-slate-50 border border-slate-300 focus:border-blue-500 focus:bg-white text-slate-900 rounded-xl pl-10 pr-4 py-3 text-sm font-semibold outline-none transition">
+                        <span class="absolute left-3.5 top-3 text-base">📸</span>
+                    </div>
+                </div>
+
+                <!-- YouTube URL -->
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">YouTube Channel URL</label>
+                    <div class="relative">
+                        <input type="url" name="social_youtube" value="{{ old('social_youtube', $settings['social_youtube']) }}" placeholder="https://youtube.com/@yourbrand"
+                               class="w-full bg-slate-50 border border-slate-300 focus:border-blue-500 focus:bg-white text-slate-900 rounded-xl pl-10 pr-4 py-3 text-sm font-semibold outline-none transition">
+                        <span class="absolute left-3.5 top-3 text-base">▶️</span>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Direct Link -->
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">WhatsApp Direct Link / wa.me URL</label>
+                    <div class="relative">
+                        <input type="url" name="social_whatsapp" value="{{ old('social_whatsapp', $settings['social_whatsapp']) }}" placeholder="https://wa.me/919643802216"
+                               class="w-full bg-slate-50 border border-slate-300 focus:border-blue-500 focus:bg-white text-slate-900 rounded-xl pl-10 pr-4 py-3 text-sm font-semibold outline-none transition">
+                        <span class="absolute left-3.5 top-3 text-base">🟢</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 mt-1">Direct click link for student instant chat support.</p>
+                </div>
+
+            </div>
         </div>
 
         <!-- Submit Button Bar -->
         <div class="pt-4 border-t border-slate-100 flex justify-end">
             <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-xs px-8 py-3.5 rounded-xl shadow-md shadow-blue-600/20 transition flex items-center gap-2">
-                <span>Save Contact Settings</span>
+                <span>Save All Website Settings</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </button>
         </div>

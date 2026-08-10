@@ -1,26 +1,26 @@
 <!-- Explore Top Academic Programs Section -->
-<section class="py-16 sm:py-24 bg-[#090D1C] text-white border-t border-slate-800">
+<section class="py-16 sm:py-24 bg-white text-slate-900 border-t border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <div class="inline-flex items-center gap-3 text-amber-400 text-xs font-bold uppercase tracking-widest font-mono mb-4">
-                <span class="w-8 h-px bg-amber-400/60"></span>
+            <div class="inline-flex items-center gap-3 text-purple-600 text-xs font-bold uppercase tracking-widest mb-4">
+                <span class="w-8 h-px bg-purple-300"></span>
                 <span>ACADEMIC PROGRAMS</span>
-                <span class="w-8 h-px bg-amber-400/60"></span>
+                <span class="w-8 h-px bg-purple-300"></span>
             </div>
             
-            <h2 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-tight">
+            <h2 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-900 tracking-tight leading-tight">
                 Explore top academic programs
             </h2>
             
-            <p class="text-slate-300 text-sm sm:text-base mt-4 leading-relaxed font-normal">
+            <p class="text-slate-600 text-sm sm:text-base mt-4 leading-relaxed font-normal">
                 Expert 1:1 admission counselling, eligibility criteria, cut-offs, and career roadmaps for every popular degree.
             </p>
         </div>
 
-        <!-- 2x3 Grid Container (Warm Light Cream Cards with Thin Dark Borders) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-slate-300/30 rounded-2xl overflow-hidden shadow-2xl bg-[#FAF8F5] text-slate-900">
+        <!-- 2x3 Grid Container (Clean White/Slate Cards with Subtle Borders) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-slate-200 rounded-2xl overflow-hidden shadow-xl bg-slate-50 text-slate-900">
             
             <!-- Card 1: B.Tech / Engineering -->
             <div class="p-8 sm:p-10 border-b md:border-b md:border-r border-slate-300/80 hover:bg-white transition-all space-y-4 flex flex-col justify-between">

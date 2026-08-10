@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('slug')->nullable()->unique(); // Nullable for home page '/'
             $table->string('title');
             $table->string('template_name')->default('default');
+            $table->longText('content')->nullable();
             $table->timestamps();
         });
     }

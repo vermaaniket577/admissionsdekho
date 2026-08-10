@@ -17,5 +17,10 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->render(function (\Illuminate\Session\TokenMismatchException $e, $request) {
+            if ($request->is('admin*')) {
+                return redirect()->route('admin.login')->withErrors(['session_expired' => 'Session token expired. Please sign in again.']);
+            }
+            return redirect()->back()->withErrors(['session_expired' => 'Session expired. Please refresh and try again.']);
+        });
     })->create();

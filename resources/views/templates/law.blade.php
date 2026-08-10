@@ -44,6 +44,16 @@
         </div>
     </section>
 
+    @if(!empty($page->content))
+        <section class="py-12 bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    {!! $page->content !!}
+                </div>
+            </div>
+        </section>
+    @endif
+
     <!-- 4 Overview Highlight Stat Cards Section -->
     <section class="py-8 bg-slate-50/80 border-b border-slate-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -23,6 +23,16 @@
     <!-- Cream Aesthetic Metric Stats & Partner Universities Section -->
     <x-partner-stats />
 
+    @if(!empty($page->content))
+        <section class="py-12 bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    {!! $page->content !!}
+                </div>
+            </div>
+        </section>
+    @endif
+
     <!-- Main Content Section -->
     <section class="py-16 sm:py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

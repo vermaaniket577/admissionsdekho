@@ -14,6 +14,7 @@ class Page extends Model
         'slug',
         'title',
         'template_name',
+        'content',
     ];
 
     /**

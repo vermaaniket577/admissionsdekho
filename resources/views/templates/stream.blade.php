@@ -96,7 +96,16 @@
 
             </div>
         </div>
-    </section>
+    @if(!empty($page->content))
+        <!-- Dynamic Page Specific Content Section -->
+        <section class="py-12 sm:py-16 bg-white border-b border-slate-200/70 reveal-on-scroll">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200/80 shadow-md">
+                    {!! $page->content !!}
+                </div>
+            </div>
+        </section>
+    @endif
 
     <!-- 2. Top Approved Colleges Info Section -->
     <section class="py-12 sm:py-16 bg-white border-b border-slate-200/70">

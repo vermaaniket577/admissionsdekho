@@ -25,3 +25,111 @@
     display: none !important;
 }
 
+/* ==========================================================================
+   Smooth Scrolling, Performance & Hardware Acceleration Enhancements
+   ========================================================================== */
+
+/* Smooth Scrolling & Font Rendering Defaults */
+html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Sleek Modern Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0B0F19;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 5px;
+    border: 2px solid #0B0F19;
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* Text Selection Styling */
+::selection {
+    background: rgba(37, 99, 235, 0.25);
+    color: #1D4ED8;
+}
+
+/* GPU Hardware Acceleration Utilities */
+.gpu-accelerated {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, opacity;
+}
+
+.will-change-transform {
+    will-change: transform;
+}
+
+/* Smooth Interactive Card & Button Micro-Interactions */
+.smooth-hover-lift {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.smooth-hover-lift:hover {
+    transform: translateY(-4px) scale(1.005);
+}
+
+.smooth-hover-lift:active {
+    transform: translateY(-1px) scale(0.99);
+}
+
+/* High Performance Scroll Reveal Animations */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.reveal-left {
+    transform: translateX(-35px);
+}
+
+.reveal-on-scroll.reveal-right {
+    transform: translateX(35px);
+}
+
+.reveal-on-scroll.reveal-scale {
+    transform: scale(0.94);
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Off-Screen Rendering Optimization for Heavy Footers/Sections */
+.optim-contain {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 600px;
+}
+
+

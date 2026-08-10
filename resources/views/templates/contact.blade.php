@@ -8,6 +8,16 @@
         </div>
     </section>
 
+    @if(!empty($page->content))
+        <section class="py-10 bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    {!! $page->content !!}
+                </div>
+            </div>
+        </section>
+    @endif
+
     <section class="py-16 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
