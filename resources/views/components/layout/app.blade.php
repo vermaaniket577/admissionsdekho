@@ -105,42 +105,7 @@
       @scroll.window="showBackToTop = (window.pageYOffset > 350)"
       @open-lead-modal.window="isModalOpen = true; modalTitle = $event.detail.title; selectedCourse = $event.detail.title">
 
-    <!-- Global Page Preloader -->
-    <div id="global-preloader"
-         x-show="!pageLoaded"
-         x-transition:leave="transition ease-in duration-300"
-         x-transition:leave-start="opacity-100"
-         x-transition:leave-end="opacity-0"
-         class="fixed inset-0 bg-[#0B0F19] z-[9999] flex flex-col items-center justify-center space-y-4 transition-opacity duration-300">
-        <div class="relative w-20 h-20 flex items-center justify-center">
-            <div class="absolute inset-0 rounded-full border-4 border-purple-500/20 border-t-purple-500 border-r-cyan-400 animate-spin"></div>
-            <img src="{{ asset('/images/brand-logo.png') }}" alt="AdmissionsDekho Logo" class="h-8 w-auto object-contain animate-pulse">
-        </div>
-        <div class="text-center space-y-1">
-            <p class="text-xs font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-300 to-amber-300 uppercase">AdmissionsDekho Guidance</p>
-            <p class="text-[11px] text-slate-400">Loading career pathways...</p>
-        </div>
-    </div>
 
-    <!-- Native Preloader Auto-Fade Fallback -->
-    <script>
-        (function() {
-            var hidePreloader = function() {
-                var el = document.getElementById('global-preloader');
-                if (el) {
-                    el.style.opacity = '0';
-                    el.style.pointerEvents = 'none';
-                    setTimeout(function() { el.style.display = 'none'; }, 300);
-                }
-            };
-            if (document.readyState === 'complete') {
-                setTimeout(hidePreloader, 400);
-            } else {
-                window.addEventListener('load', hidePreloader);
-                setTimeout(hidePreloader, 1200); // 1.2s max fallback
-            }
-        })();
-    </script>
 
     <!-- Top Announcement Bar -->
     <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white text-xs md:text-sm py-2 px-4">
