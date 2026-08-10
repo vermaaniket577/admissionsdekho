@@ -23,12 +23,26 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 
 -- Table structure for password_reset_tokens
 DROP TABLE IF EXISTS `password_reset_tokens`;
+CREATE TABLE `password_reset_tokens` (
+          `email` varchar(255) NOT NULL,
+          `token` varchar(255) NOT NULL,
+          `created_at` timestamp NULL DEFAULT NULL,
+          PRIMARY KEY (`email`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- Table structure for sessions
 DROP TABLE IF EXISTS `sessions`;
--- Dumping data for table `sessions`
-INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES ('Sb9jazY590vap9AXrfhTnMrnNOWd9iP4hUkG5lcp', '1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidkNmNWhmZ2ZpdmpZbzJ5RFp0V3pQRUtwQzQ1d3RMS0lyeWVkbWhXcyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjI6e3M6MzoidXJsIjtzOjMzOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vbG9naW4iO3M6NToicm91dGUiO3M6MTE6ImFkbWluLmxvZ2luIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', '1786346219');
-INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES ('ndMuJaz2LDEipPH6qoi9luHXTk2wdQv0MLihjChg', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiVm9xTzB5UnpHS2pxbHpzeWRXeGFSTHNnaHJWdkhVYm14SEVlQWRsUSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', '1786346469');
-INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES ('ip0YFCfm7rt3Qqr8bForvwC5JAjFRpDTbXwsdXoN', '1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTmN4VXlqMk1CYVk2NVYxMTh1V09vczlwcWZXMEw5dk80dGVRb0d1UyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9zZXR0aW5ncyI7czo1OiJyb3V0ZSI7czoyMDoiYWRtaW4uc2V0dGluZ3MuaW5kZXgiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YTowOnt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', '1786346496');
+CREATE TABLE `sessions` (
+          `id` varchar(255) NOT NULL,
+          `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+          `ip_address` varchar(45) DEFAULT NULL,
+          `user_agent` text DEFAULT NULL,
+          `payload` longtext NOT NULL,
+          `last_activity` int(11) NOT NULL,
+          PRIMARY KEY (`id`),
+          KEY `sessions_user_id_index` (`user_id`),
+          KEY `sessions_last_activity_index` (`last_activity`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Table structure for pages
 DROP TABLE IF EXISTS `pages`;
