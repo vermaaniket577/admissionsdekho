@@ -22,7 +22,7 @@ class PageSeeder extends Seeder
                 'meta_description' => 'Every student stands at a crossroads after school. We offer university admission guidance and support that turns confusion into clarity for UG, PG & PhD courses.',
                 'content' => '
                     <div class="space-y-6">
-                        <h1 class="text-4xl font-extrabold text-slate-900">AdmissionsDekho – University Admission Guidance & Support</h1>
+                        <h2 class="text-4xl font-extrabold text-slate-900">AdmissionsDekho – University Admission Guidance & Support</h1>
                         <h2 class="text-2xl font-bold text-blue-600">Your Career Story Starts With One Right Choice</h2>
                         <p class="text-slate-600 leading-relaxed">Every student stands at a crossroads after school. Some dream of building bridges. Some want to argue cases in court. Others wish to teach and research for years to come. However, most students feel lost when they search for the right path. That\'s exactly where AdmissionsDekho steps in. We offer university admission guidance and support that turns confusion into clarity. So, whether you are choosing a course or picking a college, we walk with you at every step.</p>
                         
@@ -49,7 +49,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Best Engineering Courses After 12th: Your Complete Guide | AdmissionsDekho</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Best Engineering Courses After 12th: Your Complete Guide | AdmissionsDekho</h1>
                             <p class="text-slate-600 text-base leading-relaxed">Every year, lakhs of students finish class 12th with one big question in mind. What comes next? The choices feel endless, and the pressure feels real. That is exactly where AdmissionsDekho steps in. Instead of guessing your way through forms and deadlines, you get clear answers and honest direction. This page walks you through the best engineering courses after 12th, plus other paths you can explore later in life.</p>
                         </div>
 
@@ -105,7 +105,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Best Courses After 12th Commerce 2026: Complete List & Guidance</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Best Courses After 12th Commerce 2026: Complete List & Guidance</h1>
                             <p class="text-slate-600 text-base leading-relaxed">Every commerce student stands at a crossroads after class 12. So many paths open up at once, and each one promises a different future. This moment feels confusing at first. But confusion fades quickly with the right direction. Once you understand your options, choosing among the best courses after 12th commerce becomes simple and clear. This page walks you through popular choices. It also shows how proper support shapes smart career decisions.</p>
                         </div>
 
@@ -161,7 +161,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Agriculture Courses After 12th: Best Colleges, Fees & Career Scope 2026</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Agriculture Courses After 12th: Best Colleges, Fees & Career Scope 2026</h1>
                             <p class="text-slate-600 text-base leading-relaxed">Picture a young student standing at a crossroads. Books lie on one side. Fields stretch out on the other. This student loves nature but also dreams of a stable career. Agriculture courses after 12th solve this puzzle perfectly. They blend science with soil, and passion with profession. This field no longer means only farming. It now covers biotechnology, food science, and agri-business too. Therefore, students today see agriculture as a smart, modern choice.</p>
                         </div>
 
@@ -207,7 +207,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Law Courses After 12th – Best University Admission Guidance & Counselling 2026</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Law Courses After 12th – Best University Admission Guidance & Counselling 2026</h1>
                             <p class="text-slate-600 text-base leading-relaxed">Looking for the right Law Courses After 12th? AdmissionsDekho offers the best university admission guidance and counselling for college admission 2026, completely free. We help you explore Law Courses After 12th subjects, top law colleges, and diploma in law courses after 12th options. Whether it\'s criminal law courses after 12th or integrated LLB programs, our university admission courses guidance team supports you at every step of your Law Courses After 12th journey.</p>
                         </div>
 
@@ -274,7 +274,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">PhD Courses Admission Guidance 2026 | Expert University Support</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">PhD Courses Admission Guidance 2026 | Expert University Support</h1>
                             <h2 class="text-xl font-bold text-purple-700 mb-2">PhD Courses Admission Guidance: Your Path to Higher Learning</h2>
                             <p class="text-slate-600 text-base leading-relaxed">A student sits at a desk late at night. Books surround her. Dreams surround her too. She wants a doctorate degree, but she does not know where to start. This is the story of thousands of students across India every year. Phd courses admission guidance turns that confusion into a clear plan.</p>
                         </div>
@@ -323,7 +323,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Courses After 12th Science: Best Career Options & Admission Guide 2026</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Courses After 12th Science: Best Career Options & Admission Guide 2026</h1>
                             <p class="text-slate-600 text-base leading-relaxed">You just finished school. Now a big question sits in front of you. What comes next? The world of courses after 12th science feels huge and confusing. But don\'t worry. This guide breaks it down step by step.</p>
                         </div>
 
@@ -370,7 +370,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Hospitality vs Hotel Management: Key Differences & Career Guide 2026</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Hospitality vs Hotel Management: Key Differences & Career Guide 2026</h1>
                             <p class="text-slate-600 text-base leading-relaxed">Picture two students standing at a crossroads. One dreams of running a five-star resort. The other wants to master the business side of the industry. Both choices look similar, but they lead to different careers. This is the real story behind hospitality vs hotel management. Understanding the gap helps you pick the right course and build the career you want.</p>
                         </div>
 
@@ -412,7 +412,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">BCA vs B Sc Computer Science: Which Is Better After 12th? (2026 Guide)</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">BCA vs B Sc Computer Science: Which Is Better After 12th? (2026 Guide)</h1>
                             <p class="text-slate-600 text-base leading-relaxed">Choosing a career path after 12th feels like standing at a crossroads. Every student faces this moment. Two roads often stand out: computer science and management studies. But one question keeps popping up everywhere. BCA vs B Sc computer science which is better? This guide breaks down the confusion and gives you clarity.</p>
                         </div>
 
@@ -458,7 +458,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Best Courses After 12th Arts and Humanities</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Best Courses After 12th Arts and Humanities</h1>
                             <p class="text-slate-600 text-base leading-relaxed">Choosing the right path after school is a big decision, and if you are searching for the Best Courses After 12th Arts and Humanities, you are already on the right track. Arts and Humanities open doors to careers in law, media, psychology, design, civil services, teaching, and much more. At AdmissionsDekho, we help students find the Best Courses After 12th Arts and Humanities that match their interests, strengths, and career goals.</p>
                         </div>
 
@@ -514,7 +514,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Best Education B Ed College Admission Guidance | AdmissionsDekho</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Best Education B Ed College Admission Guidance | AdmissionsDekho</h1>
                             <h2 class="text-xl font-bold text-blue-700 mb-2">A New Chapter Begins</h2>
                             <p class="text-slate-600 text-base leading-relaxed">Every student reaches a point where books close and choices open. Some dream of teaching. Others chase courtrooms, labs, or boardrooms. But dreams need direction. That is where AdmissionsDekho steps in. It turns confusion into clarity and helps students find the right path forward.</p>
                         </div>
@@ -553,7 +553,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Best Nursing Course After 12th: Fees, Eligibility & Top Colleges 2026</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Best Nursing Course After 12th: Fees, Eligibility & Top Colleges 2026</h1>
                             <p class="text-slate-600 text-base leading-relaxed">Every student reaches a turning point after class 12. You hold your result in hand, and a hundred questions fill your mind. Which path fits you best? Nursing calls many students who want to heal, serve, and grow every single day. So, this guide walks you through the best nursing course after 12th and other strong career paths too.</p>
                         </div>
 
@@ -603,7 +603,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Top MBA Colleges in India 2026: Fees, Rankings & Admission Guide | AdmissionsDekho</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Top MBA Colleges in India 2026: Fees, Rankings & Admission Guide | AdmissionsDekho</h1>
                             <p class="text-slate-600 text-base leading-relaxed">A student sits with a pile of brochures. Every college promises the best future. But which path actually fits? This question troubles thousands of students every year. AdmissionsDekho solves this problem. We simplify the search and guide you toward the right decision.</p>
                         </div>
 
@@ -649,7 +649,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Get in Touch – University Admission Guidance for Engineering, Law & PhD Courses | AdmissionsDekho</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Get in Touch – University Admission Guidance for Engineering, Law & PhD Courses | AdmissionsDekho</h1>
                             <p class="text-slate-600 text-base leading-relaxed">A big decision waits after every 12th board result. Students often feel lost among endless choices. That is where real guidance changes everything. AdmissionsDekho stands beside you at this turning point and helps you pick the right path forward.</p>
                         </div>
 
@@ -691,7 +691,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Top Colleges, Universities & Online Programs 2026 | AdmissionsDekho</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Top Colleges, Universities & Online Programs 2026 | AdmissionsDekho</h1>
                             <p class="text-slate-600 text-base leading-relaxed">A student sits with dozens of browser tabs open. Every college website says something different. Every course sounds perfect on paper. This confusion ends here. AdmissionsDekho brings clarity to a messy search. It connects you with top colleges universities online programs in one simple place. You save time. You make better choices.</p>
                         </div>
 
@@ -737,7 +737,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">About AdmissionsDekho</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">About AdmissionsDekho</h1>
                             <p class="text-slate-600 text-base leading-relaxed">Every student dreams of a bright future. But confusion often blocks that path. So many choices exist. So many forms. So many deadlines. That\'s where we step in. We turn confusion into clarity.</p>
                         </div>
 
@@ -783,7 +783,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Client Testimonials & Reviews | AdmissionsDekho Research Support</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Client Testimonials & Reviews | AdmissionsDekho Research Support</h1>
                             <p class="text-slate-600 text-base leading-relaxed">A student once sat alone with a pile of college forms. She felt lost. Then she found real guidance. That is how most success stories begin here.</p>
                         </div>
 
@@ -824,7 +824,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Our Services | AdmissionsDekho Educational Advisory</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Our Services | AdmissionsDekho Educational Advisory</h1>
                             <p class="text-slate-600 text-base leading-relaxed">AdmissionsDekho offers complete end-to-end admission solutions for students across India, covering university shortlisting, entrance exam guidance, application submission, documentation, and career counseling.</p>
                         </div>
 
@@ -883,7 +883,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Need Help? Find Answers to Our Most Frequently Asked Questions About AdmissionsDekho</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Need Help? Find Answers to Our Most Frequently Asked Questions About AdmissionsDekho</h1>
                             <p class="text-slate-600 text-base leading-relaxed">Choosing the right college feels confusing. Every student faces doubts. That\'s why AdmissionsDekho exists. We simplify the admission journey. Therefore, students trust us for clear guidance.</p>
                         </div>
 
@@ -945,7 +945,7 @@ class PageSeeder extends Seeder
                 'content' => '
                     <div class="space-y-8">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-slate-900 mb-3">Pharmacy Course After 12th – Best University Admission Guidance</h1>
+                            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Pharmacy Course After 12th – Best University Admission Guidance</h1>
                             <p class="text-slate-600 text-base leading-relaxed">If you\'re looking to build a career in the medical field right after 12th, a Pharmacy Course After 12th is one of the best options you can choose. At AdmissionsDekho, we help students get complete information about a Pharmacy Course After 12th, so their career starts off in the right direction from day one. Our goal is simple — give students honest guidance so the admission process feels easy, not overwhelming.</p>
                         </div>
 

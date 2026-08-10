@@ -10,12 +10,12 @@
                     <!-- Top Pill Badge -->
                     <div class="inline-flex items-center gap-2 bg-sky-100/80 text-sky-800 border border-sky-200/90 rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold shadow-sm">
                         <span class="text-amber-500 font-bold">★</span>
-                        <span>Rated 4.9/5 | 10,000+ Students Counseled | India's #1 {{ $page->title }} Consultants</span>
+                        <span>Rated 4.9/5 | 10,000+ Students Counseled | India's #1 Admission Consultants</span>
                     </div>
 
                     <!-- Main Heading -->
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                        {{ $page->title }} After 12th:
+                        {{ str_replace(' | AdmissionsDekho', '', $page->title) }}
                         <span class="text-blue-600 block mt-1.5">Complete Admission Guidance</span>
                     </h1>
 

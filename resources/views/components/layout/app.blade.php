@@ -4,6 +4,7 @@
 @php
     $metaTitle = $seo?->meta_title ?? $title ?? 'AdmissionsDekho: College Admission Counselling India';
     $metaDescription = $seo?->meta_description ?? 'Get free 1:1 admission counselling for UG, PG & PhD courses at 120+ UGC/AICTE-approved colleges in India. Book your free profile evaluation today!';
+    $metaKeywords = $seo?->meta_keywords ?? 'admissionsdekho, college admissions, ugc approved colleges, free 1:1 counselling, btech admissions, mba colleges, law courses after 12th';
     $canonicalUrl = $seo?->canonical_url ?? url()->current();
     $ogImage = $seo?->og_image ?? 'https://admissionsdekho.com/images/og-admissionsdekho.jpg';
     $schemaType = $seo?->schema_type ?? 'EducationalOrganization';
@@ -16,9 +17,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- SEO Meta Tags -->
+    <!-- Primary SEO Meta Tags -->
     <title>{{ $metaTitle }}</title>
     <meta name="description" content="{{ $metaDescription }}">
+    <meta name="keywords" content="{{ $metaKeywords }}">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="AdmissionsDekho Advisory Editorial Team">
+    <meta name="publisher" content="AdmissionsDekho">
     <link rel="canonical" href="{{ $canonicalUrl }}">
 
     <!-- Favicon & App Icons -->
@@ -26,13 +31,19 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('/favicon.ico') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/apple-touch-icon.png') }}">
 
-    <!-- Open Graph / Social Media -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $metaTitle }}">
     <meta property="og:description" content="{{ $metaDescription }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:image" content="{{ $ogImage }}">
     <meta property="og:site_name" content="AdmissionsDekho">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $metaTitle }}">
+    <meta name="twitter:description" content="{{ $metaDescription }}">
+    <meta name="twitter:image" content="{{ $ogImage }}">
 
     <!-- Performance Pre-connects & Fonts -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
