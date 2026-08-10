@@ -942,10 +942,10 @@ INSERT INTO `streams` (`id`, `name`, `slug`, `description`, `created_at`, `updat
 DROP TABLE IF EXISTS `courses`;
 CREATE TABLE `courses` (
           `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-          `stream_id` bigint(20) UNSIGNED NOT NULL,
+          `stream_id` bigint(20) UNSIGNED DEFAULT NULL,
           `title` varchar(255) NOT NULL,
           `slug` varchar(255) NOT NULL,
-          `level` varchar(255) DEFAULT NULL,
+          `level` varchar(255) DEFAULT 'UG',
           `duration` varchar(255) DEFAULT NULL,
           `eligibility` text DEFAULT NULL,
           `average_fee` varchar(255) DEFAULT NULL,
@@ -993,9 +993,10 @@ CREATE TABLE `colleges` (
           `name` varchar(255) NOT NULL,
           `slug` varchar(255) NOT NULL,
           `location` varchar(255) DEFAULT NULL,
-          `approval_body` varchar(255) DEFAULT NULL,
-          `rating` double(8,2) DEFAULT 4.80,
+          `approval_body` varchar(255) DEFAULT 'UGC',
+          `rating` decimal(3,1) DEFAULT 4.50,
           `total_courses` int(11) DEFAULT 15,
+          `banner_image` varchar(255) DEFAULT NULL,
           `created_at` timestamp NULL DEFAULT NULL,
           `updated_at` timestamp NULL DEFAULT NULL,
           PRIMARY KEY (`id`),
@@ -1038,16 +1039,42 @@ INSERT INTO `posts` (`id`, `title`, `slug`, `content`, `excerpt`, `featured_imag
 DROP TABLE IF EXISTS `leads`;
 CREATE TABLE `leads` (
           `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-          `name` varchar(255) NOT NULL,
-          `email` varchar(255) NOT NULL,
+          `full_name` varchar(255) NOT NULL,
           `phone` varchar(255) NOT NULL,
+          `email` varchar(255) DEFAULT NULL,
+          `stream_interest` varchar(255) DEFAULT NULL,
           `course_interest` varchar(255) DEFAULT NULL,
-          `city` varchar(255) DEFAULT NULL,
-          `message` text DEFAULT NULL,
-          `source` varchar(255) DEFAULT 'website',
+          `current_qualification` varchar(255) DEFAULT NULL,
+          `state` varchar(255) DEFAULT NULL,
+          `status` varchar(255) DEFAULT 'New',
+          `notes` text DEFAULT NULL,
           `created_at` timestamp NULL DEFAULT NULL,
           `updated_at` timestamp NULL DEFAULT NULL,
           PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Table structure for settings
+DROP TABLE IF EXISTS `settings`;
+CREATE TABLE `settings` (
+          `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+          `key` varchar(255) NOT NULL,
+          `value` longtext DEFAULT NULL,
+          `created_at` timestamp NULL DEFAULT NULL,
+          `updated_at` timestamp NULL DEFAULT NULL,
+          PRIMARY KEY (`id`),
+          UNIQUE KEY `settings_key_unique` (`key`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table `settings`
+INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES ('1', 'contact_phone', '+91 9643802216', '2026-08-10 07:17:59', '2026-08-10 07:17:59');
+INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES ('2', 'contact_email', 'info@admissionsdekho.com', '2026-08-10 07:17:59', '2026-08-10 07:17:59');
+INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES ('3', 'contact_address', 'AdmissionsDekho, India', '2026-08-10 07:17:59', '2026-08-10 07:17:59');
+INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES ('4', 'site_name', 'AdmissionsDekho', '2026-08-10 07:17:59', '2026-08-10 07:17:59');
+INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES ('5', 'whatsapp_number', '+91 9643802216', '2026-08-10 07:17:59', '2026-08-10 07:17:59');
+INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES ('6', 'social_linkedin', 'https://linkedin.com/company/admissionsdekho', '2026-08-10 07:17:59', '2026-08-10 07:17:59');
+INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES ('7', 'social_facebook', 'https://facebook.com/admissionsdekho', '2026-08-10 07:17:59', '2026-08-10 07:17:59');
+INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES ('8', 'social_instagram', 'https://instagram.com/admissionsdekho', '2026-08-10 07:17:59', '2026-08-10 07:17:59');
+INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES ('9', 'social_youtube', 'https://youtube.com/@admissionsdekho', '2026-08-10 07:17:59', '2026-08-10 07:17:59');
+INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES ('10', 'social_whatsapp', 'https://wa.me/919999999999', '2026-08-10 07:17:59', '2026-08-10 07:17:59');
 
 SET FOREIGN_KEY_CHECKS=1;
