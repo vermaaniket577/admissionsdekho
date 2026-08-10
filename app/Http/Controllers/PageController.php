@@ -25,15 +25,36 @@ class PageController extends Controller
 
         // If not found in database, build fallback metadata structure
         if (!$page) {
-            $pageName = $cleanSlug ? ucwords(str_replace(['-', '/'], ' ', $cleanSlug)) : 'Home';
+            $rawTitle = $cleanSlug ? ucwords(str_replace(['-', '/'], ' ', $cleanSlug)) : 'Home';
+            
+            // Format title to be between 50 and 60 characters
+            $metaTitle = "{$rawTitle} 2026 Admissions & Fees | AdmissionsDekho";
+            if (strlen($metaTitle) > 60) {
+                $metaTitle = "{$rawTitle} Admissions 2026 | AdmissionsDekho";
+            } elseif (strlen($metaTitle) < 50) {
+                $metaTitle = "{$rawTitle} 2026 Course Admissions & Fees | AdmissionsDekho";
+            }
+
+            // Format description to be between 150 and 160 characters
+            $metaDescription = "Explore complete admission details, eligibility criteria, UGC approved college lists, annual fee structures & counselling for {$rawTitle} on AdmissionsDekho.";
+            if (strlen($metaDescription) < 150) {
+                $metaDescription = "Explore complete admission details, eligibility criteria, UGC approved college lists, annual fee structures & counselling for {$rawTitle} on AdmissionsDekho Guidance.";
+            }
+            if (strlen($metaDescription) > 160) {
+                $metaDescription = substr($metaDescription, 0, 157) . '...';
+            }
+
+            $metaKeywords = strtolower("{$rawTitle}, {$rawTitle} admissions 2026, {$rawTitle} fees, {$rawTitle} eligibility, top ugc colleges, admissionsdekho");
+
             $page = new Page([
                 'slug' => $cleanSlug,
-                'title' => $pageName,
+                'title' => $rawTitle,
                 'template_name' => $cleanSlug ? 'stream' : 'home',
             ]);
             $page->seo = (object) [
-                'meta_title' => $pageName . ' | AdmissionsDekho Guidance',
-                'meta_description' => "Get complete admission details, top UGC/AICTE colleges, fees & counselling for {$pageName}.",
+                'meta_title' => $metaTitle,
+                'meta_description' => $metaDescription,
+                'meta_keywords' => $metaKeywords,
                 'canonical_url' => url($request->path()),
                 'schema_type' => 'EducationalOrganization',
             ];
