@@ -91,6 +91,8 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Dr Preeti Global University', 'slug' => 'dr-preeti-global-univ', 'location' => 'Shivpuri, Madhya Pradesh', 'approval_body' => 'UGC / MPPURC', 'rating' => 4.6, 'total_courses' => 12],
             ['name' => 'Mahakaushal University', 'slug' => 'mahakaushal-university', 'location' => 'Jabalpur, Madhya Pradesh', 'approval_body' => 'UGC / NCTE', 'rating' => 4.8, 'total_courses' => 14],
             ['name' => 'Mansarovar Global University', 'slug' => 'mansarovar-global-univ', 'location' => 'Bhopal, Madhya Pradesh', 'approval_body' => 'UGC / AICTE', 'rating' => 4.8, 'total_courses' => 20],
+            ['name' => 'Amity University', 'slug' => 'amity-university', 'location' => 'Noida, Uttar Pradesh', 'approval_body' => 'UGC / NAAC A+ / AICTE', 'rating' => 4.9, 'total_courses' => 45],
+            ['name' => 'Lovely Professional University (LPU)', 'slug' => 'lovely-professional-university', 'location' => 'Phagwara, Punjab', 'approval_body' => 'UGC / NAAC A++ / AICTE', 'rating' => 4.9, 'total_courses' => 50],
         ];
 
         foreach ($colleges as $colData) {
