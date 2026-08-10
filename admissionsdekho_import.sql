@@ -1,6 +1,9 @@
 -- AdmissionsDekho Live Database Export
 -- Created for cPanel phpMyAdmin Import
 
+CREATE DATABASE IF NOT EXISTS `admissio_db`;
+USE `admissio_db`;
+
 SET FOREIGN_KEY_CHECKS=0;
 
 -- Table structure for users
