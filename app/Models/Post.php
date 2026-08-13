@@ -14,6 +14,7 @@ class Post extends Model
         'title',
         'slug',
         'content',
+        'faqs',
         'excerpt',
         'featured_image',
         'status',
@@ -22,6 +23,7 @@ class Post extends Model
 
     protected $casts = [
         'published_at' => 'datetime',
+        'faqs' => 'array',
     ];
 
     public function seo(): MorphOne

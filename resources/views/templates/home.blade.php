@@ -85,11 +85,8 @@
                     
                     <!-- Inner Top Header Navigation -->
                     <div class="flex justify-between items-center pb-8 mb-8 border-b border-slate-800/60">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-purple-600/40">
-                                AD
-                            </div>
-                            <span class="text-2xl font-extrabold tracking-tight text-white">Admissions<span class="text-purple-400">Dekho</span></span>
+                        <div class="flex items-center">
+                            <img src="{{ asset('/images/brand-logo.png') }}" alt="AdmissionsDekho Logo" class="h-12 sm:h-14 w-auto object-contain drop-shadow-[0_4px_12px_rgba(234,179,8,0.4)]">
                         </div>
 
                         <div class="hidden md:flex items-center space-x-8 text-xs font-semibold text-slate-300">

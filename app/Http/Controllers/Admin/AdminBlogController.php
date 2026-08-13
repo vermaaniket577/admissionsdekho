@@ -42,6 +42,9 @@ class AdminBlogController extends Controller
             'featured_image_url' => 'nullable|string',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:500',
+            'faqs' => 'nullable|array',
+            'faqs.*.question' => 'nullable|string|max:500',
+            'faqs.*.answer' => 'nullable|string|max:5000',
         ]);
 
         $slug = !empty($validated['slug']) ? Str::slug($validated['slug']) : Str::slug($validated['title']);
@@ -54,11 +57,17 @@ class AdminBlogController extends Controller
 
         $imageData = $this->processBinaryImage($request, '/images/blogs/bed-guide.png');
 
+        // Filter out empty FAQ entries
+        $faqs = collect($validated['faqs'] ?? [])->filter(function ($faq) {
+            return !empty(trim($faq['question'] ?? '')) && !empty(trim($faq['answer'] ?? ''));
+        })->values()->toArray();
+
         $post = Post::create([
             'title' => $validated['title'],
             'slug' => $slug,
             'excerpt' => $validated['excerpt'] ?? Str::limit(strip_tags($validated['content']), 150),
             'content' => $validated['content'],
+            'faqs' => !empty($faqs) ? $faqs : null,
             'featured_image' => $imageData,
             'status' => $validated['status'],
             'published_at' => $validated['status'] === 'published' ? now() : null,
@@ -95,15 +104,24 @@ class AdminBlogController extends Controller
             'featured_image_url' => 'nullable|string',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:500',
+            'faqs' => 'nullable|array',
+            'faqs.*.question' => 'nullable|string|max:500',
+            'faqs.*.answer' => 'nullable|string|max:5000',
         ]);
 
         $imageData = $this->processBinaryImage($request, $post->featured_image);
+
+        // Filter out empty FAQ entries
+        $faqs = collect($validated['faqs'] ?? [])->filter(function ($faq) {
+            return !empty(trim($faq['question'] ?? '')) && !empty(trim($faq['answer'] ?? ''));
+        })->values()->toArray();
 
         $post->update([
             'title' => $validated['title'],
             'slug' => Str::slug($validated['slug']),
             'excerpt' => $validated['excerpt'] ?? Str::limit(strip_tags($validated['content']), 150),
             'content' => $validated['content'],
+            'faqs' => !empty($faqs) ? $faqs : null,
             'featured_image' => $imageData,
             'status' => $validated['status'],
             'published_at' => $validated['status'] === 'published' && !$post->published_at ? now() : $post->published_at,

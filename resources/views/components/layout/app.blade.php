@@ -138,8 +138,8 @@
             <div class="flex justify-between items-center h-16 sm:h-20 gap-2">
                 
                 <!-- Brand Logo -->
-                <a href="{{ url('/') }}" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-                    <img src="{{ asset('/images/brand-logo.png') }}" alt="AdmissionsDekho.com Logo" class="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105">
+                <a href="{{ url('/') }}" class="flex items-center group shrink-0">
+                    <img src="{{ asset('/images/brand-logo.png') }}" alt="AdmissionsDekho Logo" class="h-12 sm:h-14 w-auto object-contain transition-transform group-hover:scale-105 drop-shadow-sm">
                 </a>
 
                 <!-- Desktop Navigation Links -->
@@ -264,12 +264,19 @@
                     </svg>
                 </button>
                 <div x-show="openCourses" class="pl-4 pr-2 py-2 grid grid-cols-2 gap-2 text-xs font-semibold" style="display:none;">
+                    <a href="{{ url('/best-engineering-courses-after-12th/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Engineering</a>
+                    <a href="{{ url('/courses-after-12th-science/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Science</a>
+                    <a href="{{ url('/best-courses-after-12th-arts-humanities/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Arts & Humanities</a>
+                    <a href="{{ url('/education-b-ed-college/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Education</a>
+                    <a href="{{ url('/best-courses-after-12th-commerce/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Commerce</a>
+                    <a href="{{ url('/law-programs/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Law</a>
                     <a href="{{ url('/best-pharmacy-course-after-12th/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Pharmacy</a>
+                    <a href="{{ url('/best-nursing-course-after-12th/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Nursing</a>
                     <a href="{{ url('/agriculture-courses-after-12th/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Agriculture</a>
                     <a href="{{ url('/hospitality-vs-hotel-management/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Hospitality</a>
                     <a href="{{ url('/bca-vs-b-sc-computer-science-which-is-better/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Computer Applications</a>
-                    <a href="{{ url('/best-nursing-course-after-12th/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Nursing</a>
-                    <a href="{{ url('/phd-courses-admission-guidance/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">PhD Guidance</a>
+                    <a href="{{ url('/top-mba-colleges-in-india/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600">Management</a>
+                    <a href="{{ url('/phd-courses-admission-guidance/') }}" class="p-2.5 rounded-lg bg-slate-50 text-slate-700 hover:text-blue-600 col-span-2 text-center">PhD Guidance</a>
                 </div>
             </div>
 
@@ -663,8 +670,8 @@
 
                 <!-- Column 1: Brand Info -->
                 <div class="space-y-4 lg:col-span-1">
-                    <a href="{{ url('/') }}" class="inline-block bg-white p-2 rounded-2xl shadow-sm">
-                        <img src="{{ asset('/images/brand-logo.png') }}" alt="AdmissionsDekho.com Logo" class="h-10 sm:h-12 w-auto object-contain">
+                    <a href="{{ url('/') }}" class="inline-flex items-center group">
+                        <img src="{{ asset('/images/brand-logo.png') }}" alt="AdmissionsDekho Logo" class="h-16 sm:h-20 w-auto object-contain transition-transform group-hover:scale-105 drop-shadow-[0_4px_12px_rgba(234,179,8,0.3)]">
                     </a>
                     <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
                         India's leading education portal for student counseling, profile evaluation, entrance test prep, and top university admissions.
@@ -752,8 +759,13 @@
                             </div>
                         </template>
                     </ul>
-                    <button @click="showMoreUniv = !showMoreUniv" class="text-xs font-bold text-slate-300 hover:text-white mt-3 flex items-center gap-1">
-                        <span x-text="showMoreUniv ? '- Show Less ∧' : '+ Show More ∨'">+ Show More ∨</span>
+                    <button @click="showMoreUniv = !showMoreUniv" class="text-xs font-bold text-amber-400 hover:text-amber-300 mt-3.5 inline-flex items-center gap-1.5 transition-colors group">
+                        <span x-text="showMoreUniv ? '- Show Less' : '+ Show More'">+ Show More</span>
+                        <span class="w-4 h-4 rounded-full bg-amber-400/20 flex items-center justify-center text-amber-400 group-hover:bg-amber-400/30 transition-all">
+                            <svg class="w-2.5 h-2.5 transition-transform duration-200" :class="{ 'rotate-180': showMoreUniv }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
                     </button>
                 </div>
 
@@ -776,8 +788,13 @@
                             </div>
                         </template>
                     </ul>
-                    <button @click="showMoreCourses = !showMoreCourses" class="text-xs font-bold text-slate-300 hover:text-white mt-3 flex items-center gap-1">
-                        <span x-text="showMoreCourses ? '- Show Less ∧' : '+ Show More ∨'">+ Show More ∨</span>
+                    <button @click="showMoreCourses = !showMoreCourses" class="text-xs font-bold text-amber-400 hover:text-amber-300 mt-3.5 inline-flex items-center gap-1.5 transition-colors group">
+                        <span x-text="showMoreCourses ? '- Show Less' : '+ Show More'">+ Show More</span>
+                        <span class="w-4 h-4 rounded-full bg-amber-400/20 flex items-center justify-center text-amber-400 group-hover:bg-amber-400/30 transition-all">
+                            <svg class="w-2.5 h-2.5 transition-transform duration-200" :class="{ 'rotate-180': showMoreCourses }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
                     </button>
                 </div>
 
@@ -798,8 +815,13 @@
                             </div>
                         </template>
                     </ul>
-                    <button @click="showMoreLoc = !showMoreLoc" class="text-xs font-bold text-slate-300 hover:text-white mt-3 flex items-center gap-1">
-                        <span x-text="showMoreLoc ? '- Show Less ∧' : '+ Show More ∨'">+ Show More ∨</span>
+                    <button @click="showMoreLoc = !showMoreLoc" class="text-xs font-bold text-amber-400 hover:text-amber-300 mt-3.5 inline-flex items-center gap-1.5 transition-colors group">
+                        <span x-text="showMoreLoc ? '- Show Less' : '+ Show More'">+ Show More</span>
+                        <span class="w-4 h-4 rounded-full bg-amber-400/20 flex items-center justify-center text-amber-400 group-hover:bg-amber-400/30 transition-all">
+                            <svg class="w-2.5 h-2.5 transition-transform duration-200" :class="{ 'rotate-180': showMoreLoc }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
                     </button>
                 </div>
 

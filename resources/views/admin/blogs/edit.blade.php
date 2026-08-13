@@ -3,6 +3,70 @@
 @section('title', 'Edit Blog Article - ' . $post->title)
 @section('header_title', 'Edit Blog Article')
 
+@push('styles')
+<!-- Quill.js WYSIWYG Editor CSS -->
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+<style>
+    /* Editor styling overrides for a clean Word-like experience */
+    .ql-toolbar.ql-snow {
+        border: none !important;
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0 !important;
+        padding: 10px 14px !important;
+        border-radius: 16px 16px 0 0;
+    }
+    .ql-container.ql-snow {
+        border: none !important;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 15px;
+        line-height: 1.8;
+        color: #1e293b;
+    }
+    .ql-editor {
+        min-height: 400px;
+        padding: 24px !important;
+    }
+    .ql-editor.ql-blank::before {
+        color: #94a3b8;
+        font-style: normal;
+        font-size: 15px;
+    }
+    .ql-editor h2 { font-size: 1.5em; font-weight: 800; color: #0f172a; margin: 1em 0 0.5em; }
+    .ql-editor h3 { font-size: 1.25em; font-weight: 700; color: #1e293b; margin: 0.8em 0 0.4em; }
+    .ql-editor p { margin-bottom: 0.8em; }
+    .ql-editor a { color: #2563eb; text-decoration: underline; }
+    .ql-editor ul, .ql-editor ol { padding-left: 1.5em; margin-bottom: 0.8em; }
+    .ql-editor blockquote {
+        border-left: 4px solid #2563eb;
+        padding-left: 16px;
+        margin: 1em 0;
+        color: #475569;
+        font-style: italic;
+        background: #eff6ff;
+        padding: 12px 16px;
+        border-radius: 0 12px 12px 0;
+    }
+    .ql-editor img { max-width: 100%; border-radius: 12px; margin: 1em 0; }
+    .ql-snow .ql-picker.ql-header .ql-picker-label::before { font-weight: 700; }
+
+    /* Toolbar button hover & active states */
+    .ql-snow .ql-toolbar button:hover,
+    .ql-snow .ql-toolbar button.ql-active,
+    .ql-snow .ql-toolbar .ql-picker-label:hover,
+    .ql-snow .ql-toolbar .ql-picker-label.ql-active {
+        color: #2563eb !important;
+    }
+    .ql-snow .ql-toolbar button:hover .ql-stroke,
+    .ql-snow .ql-toolbar button.ql-active .ql-stroke {
+        stroke: #2563eb !important;
+    }
+    .ql-snow .ql-toolbar button:hover .ql-fill,
+    .ql-snow .ql-toolbar button.ql-active .ql-fill {
+        fill: #2563eb !important;
+    }
+</style>
+@endpush
+
 @section('content')
 <div class="max-w-4xl mx-auto space-y-6">
 
@@ -17,7 +81,7 @@
     </div>
 
     <!-- Form Container -->
-    <form action="{{ route('admin.blogs.update', $post->id) }}" method="POST" enctype="multipart/form-data" class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
+    <form id="blogForm" action="{{ route('admin.blogs.update', $post->id) }}" method="POST" enctype="multipart/form-data" class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
         @csrf
         @method('PUT')
 
@@ -78,145 +142,116 @@
             </div>
         </div>
 
-        <!-- Main Content Editor with Rich Formatting Toolbar -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- WYSIWYG Editor (Quill.js) - Word-like Visual Editor       -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <div>
             <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">Full Article Body *</label>
 
-            <!-- Alpine.js Rich Text Editor Toolbar Component -->
-            <div x-data="richTextEditor({ initialValue: @js(old('content', $post->content)) })" class="border border-slate-300 rounded-2xl overflow-hidden bg-white shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500">
-
-                <!-- Formatting Toolbar Bar -->
-                <div class="bg-slate-100/90 border-b border-slate-200 p-2 sm:p-3 flex flex-wrap items-center gap-1.5 text-xs select-none">
-                    
-                    <!-- Headings Group -->
-                    <div class="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200 shadow-2xs">
-                        <button type="button" @click="insertTag('<h2>', '</h2>')" title="Heading 2 (H2)" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded font-black text-slate-800 transition">H2</button>
-                        <button type="button" @click="insertTag('<h3>', '</h3>')" title="Heading 3 (H3)" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded font-bold text-slate-700 transition">H3</button>
-                        <button type="button" @click="insertTag('<p>', '</p>')" title="Paragraph (P)" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded font-medium text-slate-600 transition">P</button>
-                    </div>
-
-                    <div class="h-5 w-px bg-slate-300 mx-1"></div>
-
-                    <!-- Text Styling Group -->
-                    <div class="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200 shadow-2xs">
-                        <button type="button" @click="insertTag('<strong>', '</strong>')" title="Bold" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded font-black text-slate-900 transition">B</button>
-                        <button type="button" @click="insertTag('<em>', '</em>')" title="Italic" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded italic text-slate-800 transition">I</button>
-                        <button type="button" @click="insertTag('<u>', '</u>')" title="Underline" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded underline text-slate-800 transition">U</button>
-                        <button type="button" @click="insertTag('<mark class=\'bg-amber-200 text-slate-900 px-1.5 py-0.5 rounded font-semibold\'>', '</mark>')" title="Highlight Text" class="px-2.5 py-1 hover:bg-amber-100 rounded font-bold text-amber-800 transition">🎨</button>
-                    </div>
-
-                    <div class="h-5 w-px bg-slate-300 mx-1"></div>
-
-                    <!-- Lists & Structure Group -->
-                    <div class="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200 shadow-2xs">
-                        <button type="button" @click="insertList('ul')" title="Bullet List" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded font-bold text-slate-800 transition">• List</button>
-                        <button type="button" @click="insertList('ol')" title="Numbered List" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded font-bold text-slate-800 transition">1. List</button>
-                        <button type="button" @click="insertTag('<blockquote class=\'border-l-4 border-blue-600 pl-4 py-2 my-4 italic text-slate-700 bg-blue-50/60 rounded-r-xl\'>\n  ', '\n</blockquote>')" title="Blockquote" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded text-slate-800 font-serif font-bold transition">“ Quote</button>
-                    </div>
-
-                    <div class="h-5 w-px bg-slate-300 mx-1"></div>
-
-                    <!-- Embeds & Elements Group -->
-                    <div class="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200 shadow-2xs">
-                        <button type="button" @click="insertLink()" title="Insert Link" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded font-bold text-blue-600 transition">🔗 Link</button>
-                        <button type="button" @click="insertCallout()" title="Insert Highlight Callout Box" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded font-bold text-indigo-600 transition">💡 Callout</button>
-                        <button type="button" @click="insertTable()" title="Insert Comparison Table" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded font-bold text-emerald-600 transition">📊 Table</button>
-                        <button type="button" @click="insertImagePrompt()" title="Insert Image Tag" class="px-2.5 py-1 hover:bg-blue-50 hover:text-blue-600 rounded font-bold text-purple-600 transition">🖼️ Image</button>
-                    </div>
-
-                    <!-- Mode Toggle Tabs (Code Editor vs Live Visual Preview) -->
-                    <div class="ml-auto flex items-center gap-1 bg-slate-200/80 p-1 rounded-xl">
-                        <button type="button" @click="mode = 'editor'" :class="mode === 'editor' ? 'bg-white text-slate-900 font-bold shadow-xs' : 'text-slate-600 font-medium hover:text-slate-900'" class="px-3 py-1 rounded-lg transition text-xs">
-                            ✏️ Code Editor
-                        </button>
-                        <button type="button" @click="mode = 'preview'" :class="mode === 'preview' ? 'bg-blue-600 text-white font-bold shadow-xs' : 'text-slate-600 font-medium hover:text-slate-900'" class="px-3 py-1 rounded-lg transition text-xs">
-                            👁️ Live Preview
-                        </button>
-                    </div>
+            <div class="border border-slate-300 rounded-2xl overflow-hidden bg-white shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500">
+                <!-- Quill Toolbar -->
+                <div id="quill-toolbar">
+                    <span class="ql-formats">
+                        <select class="ql-header">
+                            <option value="">Normal Text</option>
+                            <option value="2">Heading 2</option>
+                            <option value="3">Heading 3</option>
+                        </select>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-bold" title="Bold"></button>
+                        <button class="ql-italic" title="Italic"></button>
+                        <button class="ql-underline" title="Underline"></button>
+                        <button class="ql-strike" title="Strikethrough"></button>
+                    </span>
+                    <span class="ql-formats">
+                        <select class="ql-color" title="Text Color"></select>
+                        <select class="ql-background" title="Background Color"></select>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-list" value="ordered" title="Numbered List"></button>
+                        <button class="ql-list" value="bullet" title="Bullet List"></button>
+                        <button class="ql-blockquote" title="Quote Block"></button>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-link" title="Insert Link"></button>
+                        <button class="ql-image" title="Insert Image"></button>
+                        <button class="ql-video" title="Embed Video"></button>
+                    </span>
+                    <span class="ql-formats">
+                        <select class="ql-align" title="Text Alignment"></select>
+                    </span>
+                    <span class="ql-formats">
+                        <button class="ql-clean" title="Clear Formatting"></button>
+                    </span>
                 </div>
 
-                <!-- Code Editor Mode -->
-                <div x-show="mode === 'editor'">
-                    <textarea x-ref="textarea" name="content" x-model="content" rows="14" required placeholder="Write full article body here or click any tool on the toolbar above to auto-insert tags..."
-                              class="w-full bg-white text-slate-900 text-sm font-mono p-4 outline-none leading-relaxed resize-y border-0 focus:ring-0"></textarea>
-                </div>
-
-                <!-- Live Rendered Preview Mode -->
-                <div x-show="mode === 'preview'" class="p-6 bg-slate-50 min-h-[320px] max-h-[500px] overflow-y-auto border-t border-slate-200">
-                    <div class="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-blue-600 leading-relaxed" x-html="content || '<p class=\'text-slate-400 italic\'>Nothing to preview yet. Start typing in the editor...</p>'"></div>
-                </div>
-
+                <!-- Quill Editor Container -->
+                <div id="quill-editor"></div>
             </div>
+
+            <!-- Hidden textarea for form submission -->
+            <textarea name="content" id="quill-content-input" class="hidden"></textarea>
         </div>
 
-        <script>
-            function richTextEditor(config) {
-                return {
-                    mode: 'editor',
-                    content: config.initialValue || '',
-                    
-                    insertTag(startTag, endTag) {
-                        const textarea = this.$refs.textarea;
-                        const start = textarea.selectionStart;
-                        const end = textarea.selectionEnd;
-                        const selectedText = this.content.substring(start, end) || 'Insert your heading/text here';
-                        const replacement = startTag + selectedText + endTag;
-                        
-                        this.content = this.content.substring(0, start) + replacement + this.content.substring(end);
-                        
-                        this.$nextTick(() => {
-                            textarea.focus();
-                            textarea.setSelectionRange(start + startTag.length, start + startTag.length + selectedText.length);
-                        });
-                    },
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- FAQ Builder Section                                        -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div x-data="faqBuilder()" class="space-y-4">
+            <div class="flex items-center justify-between">
+                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700">
+                    <span class="flex items-center gap-2">❓ Frequently Asked Questions (FAQ)</span>
+                </label>
+                <button type="button" @click="addFaq()"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-sm transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                    Add FAQ
+                </button>
+            </div>
 
-                    insertList(type) {
-                        const tag = type === 'ol' ? 'ol' : 'ul';
-                        const listHtml = `\n<${tag} class="list-disc pl-6 space-y-1.5 my-4 text-slate-800">\n  <li>First key highlight or requirement</li>\n  <li>Second key highlight or requirement</li>\n  <li>Third key highlight or requirement</li>\n</${tag}>\n`;
-                        this.insertAtCursor(listHtml);
-                    },
+            <p class="text-xs text-slate-500 font-medium" x-show="faqs.length === 0">No FAQs added yet. Click "Add FAQ" to create question & answer pairs for this article. FAQs improve SEO with Google rich results.</p>
 
-                    insertLink() {
-                        const url = prompt('Enter Destination URL:', 'https://admissionsdekho.com');
-                        if (url) {
-                            const text = prompt('Enter Anchor Text:', 'Click Here');
-                            const linkHtml = `<a href="${url}" class="text-blue-600 font-bold underline hover:text-blue-800">${text || url}</a>`;
-                            this.insertAtCursor(linkHtml);
-                        }
-                    },
+            <!-- FAQ Items -->
+            <template x-for="(faq, index) in faqs" :key="index">
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3 relative group">
+                    <!-- FAQ Number Badge & Delete -->
+                    <div class="flex items-center justify-between">
+                        <span class="inline-flex items-center gap-2 text-xs font-extrabold text-blue-700 bg-blue-100 px-3 py-1 rounded-full">
+                            <span>Q</span><span x-text="index + 1"></span>
+                        </span>
+                        <button type="button" @click="removeFaq(index)"
+                                class="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 hover:text-red-700 transition" title="Remove this FAQ">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        </button>
+                    </div>
 
-                    insertCallout() {
-                        const calloutHtml = `\n<div class="my-6 p-4 rounded-2xl bg-blue-50 border-l-4 border-blue-600 text-slate-800 text-sm font-medium shadow-sm">\n  💡 <strong>Key Admission Tip:</strong> Add important cut-off advice or deadline alerts here.\n</div>\n`;
-                        this.insertAtCursor(calloutHtml);
-                    },
+                    <!-- Question -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Question</label>
+                        <input type="text" x-model="faq.question" :name="'faqs[' + index + '][question]'"
+                               placeholder="e.g. What is the eligibility criteria for B.Tech admission?"
+                               class="w-full bg-white border border-slate-200 focus:border-blue-500 text-slate-900 text-sm rounded-xl px-4 py-2.5 outline-none transition font-semibold">
+                    </div>
 
-                    insertTable() {
-                        const tableHtml = `\n<div class="overflow-x-auto my-6">\n  <table class="w-full border-collapse border border-slate-200 text-left text-sm rounded-xl overflow-hidden">\n    <thead>\n      <tr class="bg-slate-100 text-slate-900 font-bold">\n        <th class="border border-slate-200 p-3">Institution Name</th>\n        <th class="border border-slate-200 p-3">Expected Cutoff Rank</th>\n        <th class="border border-slate-200 p-3">Annual Fee</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr class="hover:bg-slate-50">\n        <td class="border border-slate-200 p-3">IIT Delhi</td>\n        <td class="border border-slate-200 p-3">AIR 105 - 450</td>\n        <td class="border border-slate-200 p-3">₹2,20,000</td>\n      </tr>\n      <tr class="hover:bg-slate-50">\n        <td class="border border-slate-200 p-3">MAIT Delhi (GGSIPU)</td>\n        <td class="border border-slate-200 p-3">AIR 35,000 - 60,000</td>\n        <td class="border border-slate-200 p-3">₹1,45,000</td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n`;
-                        this.insertAtCursor(tableHtml);
-                    },
+                    <!-- Answer -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Answer</label>
+                        <textarea x-model="faq.answer" :name="'faqs[' + index + '][answer]'" rows="3"
+                                  placeholder="Provide a clear, concise answer..."
+                                  class="w-full bg-white border border-slate-200 focus:border-blue-500 text-slate-900 text-sm rounded-xl px-4 py-2.5 outline-none transition leading-relaxed"></textarea>
+                    </div>
+                </div>
+            </template>
 
-                    insertImagePrompt() {
-                        const imgUrl = prompt('Enter Image Asset URL:', '/images/blogs/sample.jpg');
-                        if (imgUrl) {
-                            const altText = prompt('Enter Image Caption/Alt Text:', 'College Campus Overview');
-                            const imgHtml = `\n<figure class="my-6">\n  <img src="${imgUrl}" alt="${altText}" class="w-full rounded-2xl shadow-md border border-slate-200 object-cover">\n  <figcaption class="text-center text-xs text-slate-500 mt-2 font-medium">${altText}</figcaption>\n</figure>\n`;
-                            this.insertAtCursor(imgHtml);
-                        }
-                    },
-
-                    insertAtCursor(textToInsert) {
-                        const textarea = this.$refs.textarea;
-                        const start = textarea.selectionStart;
-                        const end = textarea.selectionEnd;
-                        this.content = this.content.substring(0, start) + textToInsert + this.content.substring(end);
-                        this.$nextTick(() => {
-                            textarea.focus();
-                            textarea.setSelectionRange(start + textToInsert.length, start + textToInsert.length);
-                        });
-                    }
-                }
-            }
-        </script>
+            <!-- Add More Button (bottom) -->
+            <div x-show="faqs.length > 0" class="flex justify-center">
+                <button type="button" @click="addFaq()"
+                        class="inline-flex items-center gap-1.5 px-5 py-2.5 border-2 border-dashed border-slate-300 hover:border-blue-400 text-slate-500 hover:text-blue-600 text-xs font-bold rounded-xl transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                    Add Another FAQ
+                </button>
+            </div>
+        </div>
 
         <!-- SEO Metadata Box -->
         <div class="bg-blue-50/50 p-6 rounded-2xl border border-blue-100 space-y-4">
@@ -260,3 +295,52 @@
     </form>
 </div>
 @endsection
+
+@push('scripts')
+<!-- Quill.js -->
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+<script>
+    // Initialize Quill WYSIWYG Editor
+    const quill = new Quill('#quill-editor', {
+        modules: {
+            toolbar: '#quill-toolbar'
+        },
+        theme: 'snow',
+        placeholder: 'Start writing your article here... Just type like you would in Microsoft Word.',
+    });
+
+    // Load existing content into editor
+    quill.root.innerHTML = @js(old('content', $post->content));
+
+    function syncQuillContent() {
+        const content = quill.root.innerHTML;
+        if (content === '<p><br></p>' || content.trim() === '') {
+            document.getElementById('quill-content-input').value = '';
+        } else {
+            document.getElementById('quill-content-input').value = content;
+        }
+    }
+
+    quill.on('text-change', syncQuillContent);
+
+    // Sync Quill content to hidden textarea on form submit
+    document.getElementById('blogForm').addEventListener('submit', function(e) {
+        syncQuillContent();
+    });
+
+    // FAQ Builder Alpine Component
+    function faqBuilder() {
+        return {
+            faqs: @js(old('faqs', $post->faqs ?? [])),
+
+            addFaq() {
+                this.faqs.push({ question: '', answer: '' });
+            },
+
+            removeFaq(index) {
+                this.faqs.splice(index, 1);
+            }
+        }
+    }
+</script>
+@endpush

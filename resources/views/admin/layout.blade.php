@@ -14,6 +14,7 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
+    @stack('styles')
 </head>
 <body class="bg-slate-100/70 text-slate-800 min-h-screen flex" x-data="{ sidebarOpen: false }">
 
@@ -113,5 +114,6 @@
         </main>
     </div>
 
+    @stack('scripts')
 </body>
 </html>
