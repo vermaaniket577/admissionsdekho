@@ -27,9 +27,10 @@
     <link rel="canonical" href="{{ $canonicalUrl }}">
 
     <!-- Favicon & App Icons -->
-    <link rel="icon" type="image/png" href="{{ asset('/favicon.png') }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('/favicon.ico') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/favicon-32x32.png') }}?v={{ @filemtime(public_path('favicon-32x32.png')) ?? '1' }}">
+    <link rel="icon" type="image/png" href="{{ asset('/favicon.png') }}?v={{ @filemtime(public_path('favicon.png')) ?? '1' }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/favicon.ico') }}?v={{ @filemtime(public_path('favicon.ico')) ?? '1' }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/apple-touch-icon.png') }}?v={{ @filemtime(public_path('apple-touch-icon.png')) ?? '1' }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">

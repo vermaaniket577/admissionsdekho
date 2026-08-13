@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - AdmissionsDekho Control Panel</title>
     <!-- Favicon & App Icons -->
-    <link rel="icon" type="image/png" href="{{ asset('/favicon.png') }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('/favicon.ico') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/favicon-32x32.png') }}?v={{ @filemtime(public_path('favicon-32x32.png')) ?? '1' }}">
+    <link rel="icon" type="image/png" href="{{ asset('/favicon.png') }}?v={{ @filemtime(public_path('favicon.png')) ?? '1' }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/favicon.ico') }}?v={{ @filemtime(public_path('favicon.ico')) ?? '1' }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/apple-touch-icon.png') }}?v={{ @filemtime(public_path('apple-touch-icon.png')) ?? '1' }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
